@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmoSense - Emotion Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">EmoSense</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="{{ url_for('static', filename='case_study.pdf') }}" target="_blank">Case Study PDF</a>
+            <a href="https://github.com/Kalpnaa/emosense-nlp.git" class="github-btn">View GitHub</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <header class="header">
+        <h1>Sentiment & Emotion Analysis</h1>
+        <p class="subtitle">Detecting subtle human emotions through Natural Language Processing</p>
+    </header>
+
+    <div class="stats-row">
+        <div class="stat-box">
+            <span class="stat-number">99.4%</span>
+            <span class="stat-label">Model Accuracy</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Emotion Classes</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-number">TF-IDF</span>
+            <span class="stat-label">Vectorization</span>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        
+        <div class="column main-col">
+            <section class="card highlight-card">
+                <h2>Test the Model</h2>
+                <p class="card-desc">Enter text below to see real-time emotion prediction.</p>
+                
+                <form action="/predict" method="POST">
+                    <textarea 
+                        name="text" 
+                        rows="4" 
+                        placeholder="e.g., I am so incredibly proud of the work we did today!"
+                        required></textarea>
+                    <button type="submit" class="btn primary-btn">Analyze Emotion</button>
+                </form>
+
+                {% if prediction %}
+                    <div class="result-container theme-{{ prediction | lower }}">
+                        <div class="emotion-hero">
+                            <div class="emoji-display">
+                                {% if prediction | lower == 'anger' %} 😡
+                                {% elif prediction | lower in ['joy', 'fun'] %} ✨
+                                {% elif prediction | lower == 'sadness' %} 🌧️
+                                {% elif prediction | lower == 'love' %} 💖
+                                {% elif prediction | lower == 'surprise' %} 😲
+                                {% else %}  {% endif %}
+                            </div>
+                            <div class="emotion-text">
+                                <h3>Predicted Emotion</h3>
+                                <h2 class="emotion-name">{{ prediction }}</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="explainability-box">
+                            <h4>Top Contributing Words</h4>
+                            <div class="tags">
+                                {% for word in top_words %}
+                                    <span class="tag">{{ word }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </section>
+        </div>
+
+        <div class="column side-col">
+            <section class="card">
+                <h2>Architecture Details</h2>
+                <ul class="feature-list">
+                    <li>
+                        <strong>📊 Preprocessing:</strong> 
+                        <span>Tokenization, Lemmatization, Stopwords</span>
+                    </li>
+                    <li>
+                        <strong>⚙️ Feature Eng:</strong> 
+                        <span>N-Grams (Unigrams + Bigrams)</span>
+                    </li>
+                    <li>
+                        <strong>🤖 Algorithm:</strong> 
+                        <span>Machine Learning Classifier</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h2>Model Performance</h2>
+                <p class="card-desc">Training vs. Validation metrics.</p>
+                <div class="graph-container">
+                    <img src="{{ url_for('static', filename='accuracy_graph.png') }}" alt="Accuracy Graph" class="responsive-img">
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

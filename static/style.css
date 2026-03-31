@@ -1,0 +1,209 @@
+/* --- Color Palette (Reverted to your original image's vibe) --- */
+:root {
+    --bg-gradient-start: #E1F0FF; /* Soft light blue */
+    --bg-gradient-end: #C4E4FF;
+    --card-bg: #FFFFFF;
+    --text-main: #1E293B;
+    --text-muted: #475569;
+    --primary-blue: #0ea5e9; /* Bright UI Blue */
+    --primary-blue-hover: #0284c7;
+    --accent-yellow: #fde047;
+    --border-color: #E2E8F0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-left: 1.5rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--primary-blue); }
+
+.github-btn {
+    border: 2px solid var(--text-main);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    color: var(--text-main) !important;
+}
+
+/* --- Main Container --- */
+.container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+/* --- Header --- */
+.header { text-align: center; margin-bottom: 2rem; }
+.header h1 { font-size: 3rem; font-weight: 800; color: var(--text-main); }
+.subtitle { font-size: 1.2rem; color: var(--text-muted); }
+
+/* --- Stats Row (Fills empty space) --- */
+.stats-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-box {
+    background-color: var(--card-bg);
+    flex: 1;
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    border-bottom: 4px solid var(--accent-yellow);
+}
+
+.stat-number { display: block; font-size: 2rem; font-weight: 800; color: var(--primary-blue); line-height: 1; }
+.stat-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- Dashboard Grid --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.5rem;
+}
+
+.column { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* --- Cards --- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.card-desc { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+/* --- Forms --- */
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+textarea:focus { border-color: var(--primary-blue); }
+
+.primary-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn:hover { background-color: var(--primary-blue-hover); transform: translateY(-2px); }
+
+/* --- Architecture List --- */
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.feature-list li {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid var(--primary-blue);
+}
+.feature-list strong { color: var(--text-main); margin-bottom: 0.2rem; }
+.feature-list span { color: var(--text-muted); font-size: 0.9rem; }
+
+/* --- Graph --- */
+.graph-container {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0.5rem;
+    background: #f8fafc;
+}
+.responsive-img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+/* --- Emotion Results (The Fun Part) --- */
+.result-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.emotion-hero {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.emoji-display { font-size: 4rem; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+.emotion-text h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
+.emotion-name { font-size: 2.5rem; font-weight: 800; line-height: 1; text-transform: capitalize; }
+
+/* Dynamic Emotion Themes (Soft backgrounds fitting your original vibe) */
+.theme-anger { background-color: #FEF2F2; border: 2px solid #FECACA; }
+.theme-anger .emotion-name { color: #DC2626; }
+.theme-anger .tag { background: white; color: #DC2626; border: 1px solid #FECACA; }
+
+.theme-joy, .theme-fun { background-color: #FEFCE8; border: 2px solid #FEF08A; }
+.theme-joy .emotion-name, .theme-fun .emotion-name { color: #CA8A04; }
+.theme-joy .tag, .theme-fun .tag { background: white; color: #CA8A04; border: 1px solid #FEF08A; }
+
+.theme-sadness { background-color: #F0F9FF; border: 2px solid #BAE6FD; }
+.theme-sadness .emotion-name { color: #0284C7; }
+.theme-sadness .tag { background: white; color: #0284C7; border: 1px solid #BAE6FD; }
+
+.theme-love { background-color: #FDF2F8; border: 2px solid #FBCFE8; }
+.theme-love .emotion-name { color: #DB2777; }
+.theme-love .tag { background: white; color: #DB2777; border: 1px solid #FBCFE8; }
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.tag { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .dashboard-grid, .stats-row { grid-template-columns: 1fr; flex-direction: column; }
+    .nav-links { display: none; } /* Simple mobile menu hide */
+}
