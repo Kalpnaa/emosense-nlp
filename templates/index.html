@@ -22,7 +22,7 @@
 
 <div class="container">
     <header class="header">
-        <h1>Sentiment & Emotion Analysis</h1>
+        <h1>Emotion Analysis</h1>
         <p class="subtitle">Detecting subtle human emotions through Natural Language Processing</p>
     </header>
 
@@ -92,15 +92,15 @@
                 <h2>Architecture Details</h2>
                 <ul class="feature-list">
                     <li>
-                        <strong>📊 Preprocessing:</strong> 
+                        <strong>Preprocessing:</strong> 
                         <span>Tokenization, Lemmatization, Stopwords</span>
                     </li>
                     <li>
-                        <strong>⚙️ Feature Eng:</strong> 
+                        <strong> Feature Eng:</strong> 
                         <span>N-Grams (Unigrams + Bigrams)</span>
                     </li>
                     <li>
-                        <strong>🤖 Algorithm:</strong> 
+                        <strong> Algorithm:</strong> 
                         <span>Machine Learning Classifier</span>
                     </li>
                 </ul>
@@ -111,6 +111,11 @@
                 <p class="card-desc">Training vs. Validation metrics.</p>
                 <div class="graph-container">
                     <img src="{{ url_for('static', filename='accuracy_graph.png') }}" alt="Accuracy Graph" class="responsive-img">
+                </div>
+                <h2>Model Optimization</h2>
+                <p class="card-desc">Hyperparameter (C) vs. Mean Cross-Validation Accuracy</p>
+                <div class="graph-container">
+                    <img src="{{ url_for('static', filename='hyper_grpah.png') }}" alt="Accuracy Graph" class="responsive-img">
                 </div>
             </section>
         </div>
